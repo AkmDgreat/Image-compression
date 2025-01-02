@@ -2,7 +2,7 @@
 // File:        main.cpp
 // Author:      cheeren, zhangwil
 // Date:        2023-03-23
-// Description: Partial test of PA3 functionality
+// Description: Partial test of functionality
 //              Reads Point data from external files
 //              Produces PNG images of the point sets
 
@@ -91,6 +91,23 @@ int main() {
 
     countpng.writeToFile("images/out/output-comp-count-stanley.png");
     varpng.writeToFile("images/out/output-comp-var-stanley.png");
+
+    ////
+
+    PNG myImg;
+    myImg.readFromFile("images/orig/image.png");
+    qtcount myt3(myImg);
+    qtvar myv3(myImg);
+
+    qtcount mycountcomp(myImg);
+    qtvar myvarcomp(myImg);
+
+    PNG mycountpng = mycountcomp.render();
+    PNG myvarpng = myvarcomp.render();
+
+    mycountpng.writeToFile("images/out/output-comp-count-image.png");
+    myvarpng.writeToFile("images/out/output-comp-var-image.png");
+
 
     return 0;
 }

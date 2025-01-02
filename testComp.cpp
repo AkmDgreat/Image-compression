@@ -70,6 +70,29 @@ TEST_CASE("qtcount::basic ctor render", "[weight=1][part=qtcount]") {
 
     PNG out = t1.render();
 
+    out.writeToFile("images/out/geo.png"); // I added this line
+
+    // 
+
+
+    // my code
+    PNG myImg;
+    myImg.readFromFile("images/orig/image.png");
+    qtcount myt3(myImg);
+    qtvar myv3(myImg);
+
+    qtcount mycountcomp(myImg);
+    qtvar myvarcomp(myImg);
+
+    mycountcomp.prune(mycountcomp.idealPrune(10000));
+    myvarcomp.prune(myvarcomp.idealPrune(10000));
+
+    PNG mycountpng = mycountcomp.render();
+    PNG myvarpng = myvarcomp.render();
+
+    mycountpng.writeToFile("images/out/output-comp-count-image.png");
+    myvarpng.writeToFile("images/out/output-comp-var-image.png");
+
     REQUIRE(out == img);
 }
 
@@ -78,6 +101,7 @@ TEST_CASE("qtcount::basic copy", "[weight=1][part=qtcount]") {
     img.readFromFile("images/orig/geo.png");
 
     qtcount t1(img);
+    
     qtcount t1copy(t1);
 
     PNG out = t1copy.render();
@@ -93,7 +117,7 @@ TEST_CASE("qtcount::basic prune", "[weight=1][part=qtcount]") {
     t1.prune(3000);
     PNG result = t1.render();
 
-    // result.writeToFile("images/soln/given-adaPrune-count.png");
+    result.writeToFile("images/out/given-adaPrune-count.png");
 
     PNG expected;
     expected.readFromFile("images/soln/given-adaPrune-count.png");
@@ -119,10 +143,13 @@ TEST_CASE("qtcount::basic idealPrune", "[weight=1][part=qtcount]") {
 
     qtcount t1(img);
     int result = t1.idealPrune(13904);
+    
 
     int expected = 1366;
 
     REQUIRE(result == expected);
+
+    
 }
 
 TEST_CASE("qtvar::basic prune", "[weight=1][part=qtvar]") {

@@ -1,7 +1,7 @@
 
 /**
  *
- * quadtree (pa3)
+ * quadtree 
  *
  */
 
@@ -35,7 +35,7 @@ protected:
      * implementation details. (You may find it useful to make this public
      * for debugging.
      *
-     * given for PA3
+     * given for 
      */
     class Node {
     public:
@@ -87,7 +87,7 @@ public:
 
     /* =============== end of given functions ====================*/
 
-    /* =============== public PA3 FUNCTIONS =========================*/
+    /* =============== public FUNCTIONS =========================*/
 
     /**
      * Constructor that builds a quadtree out of the given PNG.
@@ -145,7 +145,7 @@ public:
      */
     int idealPrune(const int leaves) const;
 
-    /* =============== end of public PA3 FUNCTIONS =========================*/
+    /* =============== end of public FUNCTIONS =========================*/
 
 private:
     /*
@@ -159,7 +159,7 @@ private:
 
     int edge;  // side length of the square image
 
-    /* =================== start of private PA3 functions ============== */
+    /* =================== start of private functions ============== */
 
     /**
      * Destroys all dynamically allocated memory associated with the
@@ -193,7 +193,14 @@ private:
      */
     virtual bool prunable(Node* node, const int tol) const = 0;
 
-    /* =================== end of private PA3 functions given ============== */
+    /* =================== end of private functions given ============== */
+
+    void render_helper(Node* root, PNG& png_canvas) const;
+    void pruneHelper(Node* node, int tol);
+    void deleteSubtree(Node* node);
+    Node* copyHelper(const Node* otherNode);
+    void clearHelper(Node* node);
+    void pruneSize_helper(Node* root, const int tol, int* prunes) const;
 };
 
 #endif

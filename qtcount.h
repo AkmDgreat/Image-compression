@@ -17,6 +17,7 @@ public:
 
 private:
     bool prunable(Node* node, const int tol) const;
+    bool prunable_helper(Node* node, const int tol, unsigned int avg_r, unsigned int avg_g, unsigned int avg_b) const;
 };
 
 #endif

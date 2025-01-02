@@ -20,17 +20,19 @@ public:
     vector<vector<long>> sumsqGreen;
     vector<vector<long>> sumsqBlue;
 
-    /** Returns the sum of all pixel values in the given colour channel in the square defined by ul and dim
+    /** Returns the sum of all pixel values in the given colour channel 
+     * in the square defined by ul and dim
      * useful in computing the average of a square
-     * PA3 function
+     * function
      * @param channel is one of r, g, or b
      * @param ul is (x,y) of the upper left corner of the square
      * @param dim is log of side length of the square */
     long getSum(char channel, pair<int, int> ul, int dim);
 
-    /** Returns the sum of squares of all pixel values in the given colour channel in the square defined by ul and dim
+    /** Returns the sum of squares of all pixel values in the given 
+     * colour channel in the square defined by ul and dim
      * useful in computing the variance of a square
-     * PA3 function
+     * function
      * @param channel is one of r, g, or b
      * @param ul is (x,y) of the upper left corner of the square
      * @param dim is the log of the side length of the square */
